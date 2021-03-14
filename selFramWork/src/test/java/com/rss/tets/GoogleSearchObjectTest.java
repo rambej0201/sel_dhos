@@ -1,14 +1,13 @@
 package com.rss.tets;
 
 import com.rss.pages.GoogleSearchPage;
+import com.rss.pages.GoogleSearchPageObjects;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GoogleSearchTest {
+public class GoogleSearchObjectTest {
     public static WebDriverManager webDriverManager;
 
     static void searchingSomethingOnGoogle() throws InterruptedException {
@@ -24,11 +23,13 @@ public class GoogleSearchTest {
         Thread.sleep(2000);
         System.out.println("3 Waiting for some seconds");
 
-        GoogleSearchPage.enterTextSearch(driving_chrome).sendKeys("Black Mountain Road San Diego");
+        GoogleSearchPageObjects sampleObject = new GoogleSearchPageObjects(driving_chrome);
+
+        sampleObject.enterTextSearchObject("Black Mountain Road San Diego");
         Thread.sleep(2000);
         System.out.println("4 Waiting for some seconds");
 
-        GoogleSearchPage.clickButtonSearch(driving_chrome).sendKeys(Keys.RETURN);
+        sampleObject.clickButtonSearchObject();
         Thread.sleep(2000);
         System.out.println("5 Waiting for some seconds");
 
@@ -39,5 +40,4 @@ public class GoogleSearchTest {
     public static void main(String[] args) throws InterruptedException {
         searchingSomethingOnGoogle();
     }
-
 }
